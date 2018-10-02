@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n\n/**\n * Key to Frequency ma
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/index.js */ \"./src/index.js\");\n\n\n\n\nvar song = __webpack_require__(/*! ./song.json */ \"./test/song.json\");\n\nvar player = new _src_index_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](song);\nplayer.play();\n\n//# sourceURL=webpack:///./test/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/index.js */ \"./src/index.js\");\n/* harmony import */ var _song_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./song.json */ \"./test/song.json\");\nvar _song_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./song.json */ \"./test/song.json\", 1);\n\n\n\n // const song = require('./song.json');\n\nvar player = new _src_index_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_song_json__WEBPACK_IMPORTED_MODULE_1__);\nplayer.play();\n\n//# sourceURL=webpack:///./test/index.js?");
 
 /***/ }),
 
