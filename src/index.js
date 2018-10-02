@@ -78,7 +78,7 @@ export default class Audio {
 
   /**
    * Play a single note with the given params.
-   * 
+   *
    * @param {Number} freq
    *   The note frequency to play.
    * @param {Number} len

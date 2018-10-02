@@ -17,7 +17,7 @@
     "webpack-merge": "^4.1.4"
   },
   "scripts": {
-    "lint": "prettier {,src/**/}*.js --single-quote --write",
+    "lint": "prettier {,{src,test}/**/,}*.js --single-quote --write",
     "watch": "webpack --config webpack.dev.js --progress --watch",
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",

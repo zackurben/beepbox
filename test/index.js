@@ -4,4 +4,6 @@ import Audio from '../src/index.js';
 import song from './song.json';
 
 const player = new Audio(song);
-player.play();
+
+// Connect the note button
+document.getElementById('note').addEventListener('click', () => player.note());
