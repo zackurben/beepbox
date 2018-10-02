@@ -1,6 +1,6 @@
 'use strict';
 
-import Note from './note';
+import Note from './notes';
 
 export default class Audio {
   constructor(song, volume = 0.2) {

@@ -3,26 +3,18 @@ const clean = require('clean-webpack-plugin');
 const html = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './test/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, 'test'),
+    publicPath: ''
   },
   plugins: [
-    new clean(['test/index.html']),
+    new clean(['test/index.html', 'test/main.js']),
     new html({
       filename: path.resolve(__dirname, 'test/index.html'),
-      template: `
-        <!doctype html>
-        <html>
-          <head>
-            <meta charset=utf-8>
-          </head>
-          <body>
-          </body>
-        </html>
-      `
+      template: 'index.html'
     })
   ],
   module: {
