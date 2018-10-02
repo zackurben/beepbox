@@ -67,6 +67,20 @@ export default class Audio {
     lastNode.onended = () => this.play();
   }
 
+  /**
+   * Play a single note with the given params.
+   * 
+   * @param {Number} freq
+   *   The note frequency to play.
+   * @param {Number} len
+   *   The duration to play the note (seconds).
+   * @param {Number} off
+   *   The time offset to play the note (seconds).
+   * @param {String} type
+   *   The OscillatorNode type to use; https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type
+   * @param {Number} gain
+   *   The gain (volume) to play the note at (0.0 - 1.0).
+   */
   note(freq = 440, len = 0.1, off = 0, type = 'sine', gain = 0.2) {
     let volume = this.context.createGain();
     volume.connect(this.context.destination);

@@ -1,6 +1,6 @@
 {
   "name": "beepbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple beepbox player!",
   "main": "src/index.js",
   "dependencies": {},
