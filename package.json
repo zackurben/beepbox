@@ -20,7 +20,8 @@
     "lint": "prettier {,src/**/}*.js --single-quote --write",
     "watch": "webpack --config webpack.dev.js --progress --watch",
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "build:test": "webpack --config webpack.test.js"
   },
   "author": "Zack Urben <zackurben@gmail.com> (http://zackurben.com)",
   "license": "MIT"
