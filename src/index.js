@@ -64,7 +64,16 @@ export default class Audio {
       });
     });
 
+    return lastNode;
+  }
+
+  loop() {
+    let lastNode = this.play();
     lastNode.onended = () => this.play();
+  }
+
+  stop(node, delay = 0.0) {
+    this.node.stop(delay);
   }
 
   /**
