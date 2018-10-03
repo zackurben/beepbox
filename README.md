@@ -6,28 +6,40 @@ This is an open source project under the MIT license, see [LICENSE.md](LICENSE.m
 
 # Usage
 
-### Create an audio context
+### Create an audio context and load a song
 ```js
 import Audio from 'beepbox';
-const player = new Audio();
-```
-
-### Load a beepbox song
-```js
 import song from './song.json';
 const player = new Audio(song);
 ```
 
-### Play a beepbox song
+### Play a beepbox song (once)
 ```js
+/**
+ * Play the loaded clip once.
+ *
+ * @returns {Object}
+ *   The generic node from Audio.generateNode() for this sequence.
+ */
 player.play();
+```
+
+### Loop a beepbox song (infinitely)
+```js
+/**
+ * Play the loaded clip infinitely.
+ *
+ * @returns {Object}
+ *   The generic node from Audio.generateNode() for this sequence.
+ */
+player.loop();
 ```
 
 ### Play a single note
 ```js
 /**
  * Play a single note with the given params.
- * 
+ *
  * @param {Number} freq
  *   The note frequency to play.
  * @param {Number} len
@@ -38,6 +50,9 @@ player.play();
  *   The OscillatorNode type to use; https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type
  * @param {Number} gain
  *   The gain (volume) to play the note at (0.0 - 1.0).
+ *
+ * @returns {Object}
+ *   The generic node from Audio.generateNode() for this sequence.
  */
 player.note(freq, len, off, type, gain);
 ```
