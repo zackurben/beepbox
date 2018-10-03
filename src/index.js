@@ -13,8 +13,39 @@ export default class Audio {
     this._volume.gain.value = this.volume;
   }
 
+  /**
+   * Generate a generic node for common usage.
+   *
+   * @param {Array} notes
+   *   The list of notes to use in the node.
+   * @param {OscillatorNode} lastNode
+   *   The last node being played in the sequence.
+   *
+   * @returns {Object}
+   *   The generated node.
+   */
+  static generateNode(notes, lastNode) {
+    const node = {
+      notes,
+      stop: () => notes.forEach(note => note.stop())
+    };
+
+    let temp = {};
+    if (lastNode) {
+      temp.last = lastNode;
+    }
+
+    return Object.assign({}, temp, node);
+  }
+
+  /**
+   * Play the loaded clip once.
+   *
+   * @returns {Object}
+   *   The generic node from Audio.generateNode() for this sequence.
+   */
   play() {
-    let out = [];
+    let notes = [];
     let speed = 1000 / (this.song.beatsPerMinute / 60) / 1000 / 4;
     let lastNode;
     let largestTime;
@@ -59,17 +90,35 @@ export default class Audio {
                 largestTime = end;
                 lastNode = node;
               }
+
+              notes.push(node);
             });
           });
       });
     });
 
-    lastNode.onended = () => this.play();
+    const [last] = lastNode.notes;
+    return Audio.generateNode(notes, last);
+  }
+
+  /**
+   * Play the loaded clip infinitely.
+   *
+   * @returns {Object}
+   *   The generic node from Audio.generateNode() for this sequence.
+   */
+  loop() {
+    let node = this.play();
+    if (node.last) {
+      node.last.onended = () => Object.assign(node, this.play());
+    }
+
+    return node;
   }
 
   /**
    * Play a single note with the given params.
-   * 
+   *
    * @param {Number} freq
    *   The note frequency to play.
    * @param {Number} len
@@ -80,6 +129,9 @@ export default class Audio {
    *   The OscillatorNode type to use; https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type
    * @param {Number} gain
    *   The gain (volume) to play the note at (0.0 - 1.0).
+   *
+   * @returns {Object}
+   *   The generic node from Audio.generateNode() for this sequence.
    */
   note(freq = 440, len = 0.1, off = 0, type = 'sine', gain = 0.2) {
     let volume = this.context.createGain();
@@ -95,6 +147,6 @@ export default class Audio {
     osc.start(now + off);
     osc.stop(now + off + len);
 
-    return osc;
+    return Audio.generateNode([osc]);
   }
 }
