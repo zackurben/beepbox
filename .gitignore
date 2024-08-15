@@ -1,5 +1,7 @@
 dist/
 .vscode/
+node_modules/
+package-lock.json
 
 # Created by https://www.gitignore.io/api/osx,git,node,windows,webstorm,visualstudiocode
 
