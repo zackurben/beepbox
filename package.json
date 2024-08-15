@@ -1,5 +1,5 @@
 {
-  "name": "beepbox",
+  "name": "beepbox-lite",
   "version": "1.0.0",
   "description": "A simple beepbox player!",
   "main": "src/index.js",
